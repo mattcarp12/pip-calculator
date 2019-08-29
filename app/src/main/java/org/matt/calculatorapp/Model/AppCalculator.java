@@ -1,6 +1,6 @@
 package org.matt.calculatorapp.Model;
 
-import org.matt.calculatorapp.Model.Converter;
+import org.matt.calculatorapp.Model.Evaluator.Evaluator;
 
 public class AppCalculator implements Calculator {
 
