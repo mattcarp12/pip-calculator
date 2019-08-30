@@ -2,7 +2,7 @@ package org.matt.calculatorapp.Model.Evaluator;
 
 public class Evaluator {
 
-    public static int evaluateInputString(String inputString, String mode) {
+    public static double evaluateInputString(String inputString, String mode) {
         switch (mode) {
             case "INFIX":
                 return evaluateInputStringInfix(inputString);
@@ -15,15 +15,15 @@ public class Evaluator {
         }
     }
 
-    private static int evaluateInputStringInfix(String inputString){
+    private static double evaluateInputStringInfix(String inputString){
+        return Infix.evaluate(inputString);
+    }
+
+    private static double evaluateInputStringPrefix(String inputString) {
         return 0;
     }
 
-    private static int evaluateInputStringPrefix(String inputString) {
-        return 0;
-    }
-
-    private static int evaluateInputStringPostfix(String inputString) {
+    private static double evaluateInputStringPostfix(String inputString) {
         return 0;
     }
 

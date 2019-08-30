@@ -4,7 +4,7 @@ public interface Calculator {
 
     void addToInputString(char c);
 
-    int getResult();
+    double getResult();
 
     void setCalculatorMode(String mode);
 

@@ -1,19 +1,11 @@
 package org.matt.calculatorapp.Model.Evaluator;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Stack;
+import static org.matt.calculatorapp.Model.Evaluator.Utility.EvaluatorUtils.applyOperator;
+import static org.matt.calculatorapp.Model.Evaluator.Utility.EvaluatorUtils.isOperator;
+import static org.matt.calculatorapp.Model.Evaluator.Utility.EvaluatorUtils.precedence;
 
 public class Infix {
-
-    private static final Map<Character, Integer> precendence = new HashMap<>();
-    static {
-        precendence.put('-', 1);
-        precendence.put('+', 1);
-        precendence.put('/', 2);
-        precendence.put('*', 2);
-        precendence.put('^', 3);
-    }
 
     public static double evaluate(String inputString) {
         Stack<Character> operatorStack = new Stack<>();
@@ -31,14 +23,13 @@ public class Infix {
                     operand.setLength(0);
                 }
                 while (!operatorStack.isEmpty() && isOperator(operatorStack.peek()) &&
-                precendence.get(operatorStack.peek()) >= precendence.get(c))
+                precedence.get(operatorStack.peek()) >= precedence.get(c))
                     operandStack.push(applyOperator(operatorStack.pop(), operandStack.pop(), operandStack.pop()));
                 operatorStack.push(c);
             }
 
             if (c == ')') {
                 while (operandStack.peek() != '(')
-                    // Apply operator on top of operator stack to two operands on top of operand stack
                     operandStack.push(applyOperator(operatorStack.pop(), operandStack.pop(), operandStack.pop()));
                 operandStack.pop();
             }
@@ -48,27 +39,6 @@ public class Infix {
         while (!operatorStack.isEmpty())
             operandStack.push(applyOperator(operatorStack.pop(), operandStack.pop(), operandStack.pop()));
         return operandStack.pop();
-    }
-
-    private static boolean isOperator(char c) {
-        return "-+/*^".indexOf(c) != -1;
-    }
-
-    private static double applyOperator(char operator, double op1, double op2) {
-        switch (operator) {
-            case '+':
-                return op1 + op2;
-            case '-':
-                return op1 - op2;
-            case '*':
-                return op1 * op2;
-            case '/':
-                return op1 / op2;
-            case '^':
-                return Math.pow(op1, op2);
-            default:
-                return 0;
-        }
     }
 
 }

@@ -1,11 +1,12 @@
 package org.matt.calculatorapp.Model;
 
+import org.matt.calculatorapp.Model.Converter.Converter;
 import org.matt.calculatorapp.Model.Evaluator.Evaluator;
 
 public class AppCalculator implements Calculator {
 
     private StringBuilder inputString;
-    private int result;
+    private double result;
     private String mode;
 
 
@@ -21,7 +22,7 @@ public class AppCalculator implements Calculator {
     }
 
     @Override
-    public int getResult() {
+    public double getResult() {
         result = Evaluator.evaluateInputString(inputString.toString(), mode);
         return result;
     }

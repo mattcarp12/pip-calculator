@@ -1,4 +1,4 @@
-package org.matt.calculatorapp.Model;
+package org.matt.calculatorapp.Model.Converter;
 
 public class Converter {
 
