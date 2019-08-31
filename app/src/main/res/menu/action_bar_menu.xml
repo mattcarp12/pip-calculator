@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/prefix_mode"
+        android:title="Prefix" />
+    <item
+        android:id="@+id/infix_mode"
+        android:title="Infix" />
+    <item
+        android:id="@+id/postfix_mode"
+        android:title="Postfix" />
+</menu>

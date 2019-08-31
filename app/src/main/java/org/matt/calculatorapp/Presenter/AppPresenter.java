@@ -28,7 +28,7 @@ public class AppPresenter implements Presenter {
     }
 
     @Override
-    public int getResult() {
+    public double getResult() {
         return calculator.getResult();
     }
 

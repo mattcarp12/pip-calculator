@@ -40,7 +40,7 @@ public class AppCalculator implements Calculator {
 
     @Override
     public void clear() {
-        inputString = new StringBuilder(result);
+        inputString = new StringBuilder(Double.toString(result));
     }
 
 

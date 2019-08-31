@@ -4,7 +4,7 @@ public interface Presenter {
 
     void addToInputString(char c);
 
-    int getResult();
+    double getResult();
 
     void setCalculatorMode(String mode);
 
@@ -13,3 +13,4 @@ public interface Presenter {
     void clearCalculator();
 
 }
+
