@@ -2,40 +2,46 @@ package org.matt.calculatorapp.Presenter;
 
 import org.matt.calculatorapp.Model.AppCalculator;
 import org.matt.calculatorapp.Model.Calculator;
-import org.matt.calculatorapp.View.View;
+import org.matt.calculatorapp.AppView.AppView;
 
 public class AppPresenter implements Presenter {
 
     private Calculator calculator;
-    private View view;
+    private AppView appView;
+
+    public AppPresenter(AppView appView) {
+        this.appView = appView;
+        calculator = new AppCalculator();
+    }
 
     @Override
     public void clearCalculator() {
         calculator.clear();
-        view.clearInputString();
-        view.clearResult();
+        appView.clearInputString();
+        appView.clearResult();
     }
 
-    public AppPresenter(View view) {
-        this.view = view;
-        calculator = new AppCalculator();
+    @Override
+    public void setInputString(String inputString) {
+        calculator.setInputString(inputString);
+        appView.setInputString(inputString);
     }
 
     @Override
     public void addToInputString(char c) {
         calculator.addToInputString(c);
-        view.setInputString(calculator.getInputString());
+        appView.setInputString(calculator.getInputString());
     }
 
     @Override
-    public double getResult() {
+    public String getResult() {
         return calculator.getResult();
     }
 
     @Override
     public void setCalculatorMode(String mode) {
         calculator.setCalculatorMode(mode);
-        view.setInputString(calculator.getInputString());
+        appView.setInputString(calculator.getInputString());
     }
 
     @Override

@@ -39,6 +39,11 @@ public class AppCalculator implements Calculator {
     }
 
     @Override
+    public void setInputString(String inputString) {
+
+    }
+
+    @Override
     public void clear() {
         inputString = new StringBuilder(Double.toString(result));
     }

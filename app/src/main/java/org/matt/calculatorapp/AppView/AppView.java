@@ -1,6 +1,6 @@
-package org.matt.calculatorapp.View;
+package org.matt.calculatorapp.AppView;
 
-public interface View {
+public interface AppView {
 
     void setInputString(String inputString);
 
