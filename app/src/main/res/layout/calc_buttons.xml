@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,141 +11,184 @@
     android:rowCount="5">
 
     <Button
+        android:id="@+id/btn_neg"
+        style="@style/FunctionalButtons.margins"
+        android:text="+/-"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_1" />
+
+    <Button
+        android:id="@+id/btn_decimal"
+        style="@style/FunctionalButtons.margins"
+        android:text="."
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_eq"
+        app:layout_constraintStart_toEndOf="@+id/btn_0"
+        app:layout_constraintTop_toBottomOf="@+id/btn_3" />
+
+    <Button
+        android:id="@+id/btn_0"
+        style="@style/FunctionalButtons.margins"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_decimal"
+        app:layout_constraintStart_toEndOf="@+id/btn_neg"
+        app:layout_constraintTop_toBottomOf="@+id/btn_2" />
+
+    <Button
+        android:id="@+id/btn_1"
+        style="@style/FunctionalButtons.margins"
+        android:text="1"
+        app:layout_constraintBottom_toTopOf="@+id/btn_neg"
+        app:layout_constraintEnd_toStartOf="@+id/btn_2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_4" />
+
+    <Button
+        android:id="@+id/btn_3"
+        style="@style/FunctionalButtons.margins"
+        android:text="3"
+        app:layout_constraintBottom_toTopOf="@+id/btn_decimal"
+        app:layout_constraintEnd_toStartOf="@+id/btn_add"
+        app:layout_constraintStart_toEndOf="@+id/btn_2"
+        app:layout_constraintTop_toBottomOf="@+id/btn_6" />
+
+    <Button
+        android:id="@+id/btn_2"
+        style="@style/FunctionalButtons.margins"
+        android:text="2"
+        app:layout_constraintBottom_toTopOf="@+id/btn_0"
+        app:layout_constraintEnd_toStartOf="@+id/btn_3"
+        app:layout_constraintStart_toEndOf="@+id/btn_1"
+        app:layout_constraintTop_toBottomOf="@+id/btn_5" />
+
+    <Button
+        android:id="@+id/btn_4"
+        style="@style/FunctionalButtons.margins"
+        android:text="4"
+        app:layout_constraintBottom_toTopOf="@+id/btn_1"
+        app:layout_constraintEnd_toStartOf="@+id/btn_5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_7" />
+
+    <Button
+        android:id="@+id/btn_6"
+        style="@style/FunctionalButtons.margins"
+        android:text="6"
+        app:layout_constraintBottom_toTopOf="@+id/btn_3"
+        app:layout_constraintEnd_toStartOf="@+id/btn_sub"
+        app:layout_constraintStart_toEndOf="@+id/btn_5"
+        app:layout_constraintTop_toBottomOf="@+id/btn_9" />
+
+    <Button
+        android:id="@+id/btn_5"
+        style="@style/FunctionalButtons.margins"
+        android:text="5"
+        app:layout_constraintBottom_toTopOf="@+id/btn_2"
+        app:layout_constraintEnd_toStartOf="@+id/btn_6"
+        app:layout_constraintStart_toEndOf="@+id/btn_4"
+        app:layout_constraintTop_toBottomOf="@+id/btn_8" />
+
+    <Button
+        android:id="@+id/btn_9"
+        style="@style/FunctionalButtons.margins"
+        android:text="9"
+        app:layout_constraintBottom_toTopOf="@+id/btn_6"
+        app:layout_constraintEnd_toStartOf="@+id/btn_mul"
+        app:layout_constraintStart_toEndOf="@+id/btn_8"
+        app:layout_constraintTop_toBottomOf="@+id/btn_del" />
+
+    <Button
+        android:id="@+id/btn_8"
+        style="@style/FunctionalButtons.margins"
+        android:text="8"
+        app:layout_constraintBottom_toTopOf="@+id/btn_5"
+        app:layout_constraintEnd_toStartOf="@+id/btn_9"
+        app:layout_constraintStart_toEndOf="@+id/btn_7"
+        app:layout_constraintTop_toBottomOf="@+id/btn_paren" />
+
+    <Button
         android:id="@+id/btn_clear"
-        style="@style/FunctionalButtons"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/FunctionalButtons.margins"
         android:text="C"
-        app:layout_constraintBottom_toTopOf="@+id/row_0"
-        app:layout_constraintEnd_toStartOf="@+id/column_0"
+        app:layout_constraintBottom_toTopOf="@+id/btn_7"
+        app:layout_constraintEnd_toStartOf="@+id/btn_paren"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:id="@+id/btn_7"
+        style="@style/FunctionalButtons.margins"
+        android:text="7"
+        app:layout_constraintBottom_toTopOf="@+id/btn_4"
+        app:layout_constraintEnd_toStartOf="@+id/btn_8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_clear" />
+
+    <Button
         android:id="@+id/btn_div"
-        style="@style/FunctionalButtons"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/FunctionalButtons.margins"
         android:text="/"
-        app:layout_constraintBottom_toTopOf="@+id/row_0"
+        app:layout_constraintBottom_toTopOf="@+id/btn_mul"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/column_2"
+        app:layout_constraintStart_toEndOf="@+id/btn_del"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_mul"
-        style="@style/FunctionalButtons"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/FunctionalButtons.margins"
         android:text="x"
-        app:layout_constraintBottom_toTopOf="@+id/row_1"
+        app:layout_constraintBottom_toTopOf="@+id/btn_sub"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/column_2"
-        app:layout_constraintTop_toTopOf="@id/row_0" />
+        app:layout_constraintStart_toEndOf="@+id/btn_9"
+        app:layout_constraintTop_toBottomOf="@+id/btn_div" />
 
     <Button
         android:id="@+id/btn_sub"
-        style="@style/FunctionalButtons"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/FunctionalButtons.margins"
         android:text="-"
-        app:layout_constraintBottom_toTopOf="@+id/row_2"
+        app:layout_constraintBottom_toTopOf="@+id/btn_add"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/column_2"
-        app:layout_constraintTop_toTopOf="@id/row_1" />
+        app:layout_constraintStart_toEndOf="@+id/btn_6"
+        app:layout_constraintTop_toBottomOf="@+id/btn_mul" />
 
     <Button
         android:id="@+id/btn_add"
-        style="@style/FunctionalButtons"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/FunctionalButtons.margins"
         android:text="+"
-        app:layout_constraintBottom_toTopOf="@+id/row_3"
+        app:layout_constraintBottom_toTopOf="@+id/btn_eq"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/column_2"
-        app:layout_constraintTop_toTopOf="@id/row_2" />
+        app:layout_constraintStart_toEndOf="@+id/btn_3"
+        app:layout_constraintTop_toBottomOf="@+id/btn_sub" />
 
     <Button
         android:id="@+id/btn_eq"
-        style="@style/FunctionalButtons"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/FunctionalButtons.margins"
         android:text="="
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/column_2"
-        app:layout_constraintTop_toTopOf="@id/row_3" />
+        app:layout_constraintStart_toEndOf="@+id/btn_decimal"
+        app:layout_constraintTop_toBottomOf="@+id/btn_add" />
 
     <Button
         android:id="@+id/btn_del"
-        style="@style/FunctionalButtons"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/FunctionalButtons.margins"
         android:text="DEL"
-        app:layout_constraintBottom_toTopOf="@+id/row_0"
-        app:layout_constraintEnd_toStartOf="@+id/column_2"
-        app:layout_constraintStart_toStartOf="@+id/column_1"
+        app:layout_constraintBottom_toTopOf="@+id/btn_9"
+        app:layout_constraintEnd_toStartOf="@+id/btn_div"
+        app:layout_constraintStart_toEndOf="@+id/btn_paren"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_paren"
-        style="@style/FunctionalButtons"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/FunctionalButtons.margins"
         android:text="()"
-        app:layout_constraintBottom_toTopOf="@+id/row_0"
-        app:layout_constraintEnd_toStartOf="@+id/column_1"
-        app:layout_constraintStart_toStartOf="@+id/column_0"
+        app:layout_constraintBottom_toTopOf="@+id/btn_8"
+        app:layout_constraintEnd_toStartOf="@+id/btn_del"
+        app:layout_constraintStart_toEndOf="@+id/btn_clear"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/column_0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.25" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/column_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent=".50" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/column_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent=".75" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/row_0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".2" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/row_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".4" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/row_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".6" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/row_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".8" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
