@@ -2,29 +2,16 @@ package org.matt.calculatorapp.Model.Evaluator;
 
 public class Evaluator {
 
-    public static double evaluateInputString(String inputString, String mode) {
+    public static String evaluateInputString(String inputString, String mode) throws Exception {
         switch (mode) {
-            case "INFIX":
-                return evaluateInputStringInfix(inputString);
             case "PREFIX":
-                return evaluateInputStringPrefix(inputString);
+                return Prefix.evaluateInputString(inputString);
+            case "INFIX":
+                return Infix.evaluateInputString(inputString);
             case "POSTFIX":
-                return evaluateInputStringPostfix(inputString);
+                return Postfix.evaluateInputString(inputString);
             default:
-                return 0;
+                return "";
         }
     }
-
-    private static double evaluateInputStringInfix(String inputString){
-        return Infix.evaluate(inputString);
-    }
-
-    private static double evaluateInputStringPrefix(String inputString) {
-        return 0;
-    }
-
-    private static double evaluateInputStringPostfix(String inputString) {
-        return 0;
-    }
-
 }

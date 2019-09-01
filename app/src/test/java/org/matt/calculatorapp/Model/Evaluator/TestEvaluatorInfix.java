@@ -2,17 +2,34 @@ package org.matt.calculatorapp.Model.Evaluator;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
-import org.matt.calculatorapp.Model.Evaluator.Infix;
 
 public class TestEvaluatorInfix {
 
     @Test
-    public void evaluateInfix() {
-        /*assertEquals(Infix.evaluate("2 + 2"), 4, 0.000001);
-        assertEquals(Infix.evaluate("5*(2 + 2)"), 20, 0.000001);
-        assertEquals(Infix.evaluate("2 ^ (2)"), 4, 0.000001);
-        assertEquals(Infix.evaluate("(2) + 2"), 4, 0.000001);
-        assertEquals(Infix.evaluate("8 / 2 * (2 + 2)"), 1, 0.000001);
-        assertEquals(Infix.evaluate("2 ^ (9/3)"), 8, 0.000001);*/
+    public void EvaluateInputStringTest() {
+        Infix infix = new Infix();
+        try {
+            assertEquals("5", infix.evaluateInputString("3 + 2"));
+            assertEquals("1", infix.evaluateInputString("3 - 2"));
+            assertEquals("6", infix.evaluateInputString("3 * 2"));
+            assertEquals("1.5", infix.evaluateInputString("3 / 2"));
+            assertEquals("20", infix.evaluateInputString("5*(2 + 2)"));
+            assertEquals("4", infix.evaluateInputString("(2) + 2"));
+            assertEquals("16", infix.evaluateInputString("8 / 2 * (2 + 2)"));
+            assertEquals("0", Infix.evaluateInputString("3x0"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
+
+
+    @Test
+    public void test2() {
+        double y = 1.2;
+        if (y % 1 == 0) System.out.println((int) y);
+        else System.out.println(y);
+    }
+
+
 }

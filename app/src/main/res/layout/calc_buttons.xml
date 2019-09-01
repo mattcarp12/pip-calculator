@@ -22,7 +22,7 @@
     <Button
         android:id="@+id/btn_decimal"
         style="@style/FunctionalButtons.margins"
-        android:text="."
+        android:text="\u2423\n."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_eq"
         app:layout_constraintStart_toEndOf="@+id/btn_0"
@@ -139,7 +139,7 @@
     <Button
         android:id="@+id/btn_mul"
         style="@style/FunctionalButtons.margins"
-        android:text="x"
+        android:text="*"
         app:layout_constraintBottom_toTopOf="@+id/btn_sub"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn_9"

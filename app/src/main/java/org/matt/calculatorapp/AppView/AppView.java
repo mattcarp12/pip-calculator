@@ -2,9 +2,9 @@ package org.matt.calculatorapp.AppView;
 
 public interface AppView {
 
-    void setInputString(String inputString);
+    void setTvInputString(String inputString);
 
-    void setResult(int result);
+    void setTvResult(String result);
 
     void clearInputString();
 

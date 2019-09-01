@@ -24,13 +24,19 @@ public class AppPresenter implements Presenter {
     @Override
     public void setInputString(String inputString) {
         calculator.setInputString(inputString);
-        appView.setInputString(inputString);
+        appView.setTvInputString(inputString);
+    }
+
+    @Override
+    public void addParen() {
+        calculator.addParen();
+        update();
     }
 
     @Override
     public void addToInputString(char c) {
         calculator.addToInputString(c);
-        appView.setInputString(calculator.getInputString());
+        update();
     }
 
     @Override
@@ -41,11 +47,22 @@ public class AppPresenter implements Presenter {
     @Override
     public void setCalculatorMode(String mode) {
         calculator.setCalculatorMode(mode);
-        appView.setInputString(calculator.getInputString());
+        appView.setTvInputString(calculator.getInputString());
     }
 
     @Override
     public String getInputString() {
-        return getInputString();
+        return calculator.getInputString();
+    }
+
+    @Override
+    public void deleteFromInputString() {
+        calculator.deleteFromInputString();
+        update();
+    }
+
+    private void update() {
+        appView.setTvInputString(calculator.getInputString());
+        appView.setTvResult(calculator.getResult());
     }
 }
