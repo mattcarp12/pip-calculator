@@ -1,4 +1,4 @@
-package org.matt.calculatorapp.Model.Evaluator.Utility;
+package org.matt.calculatorapp.Model.Utility;
 
 import java.math.BigDecimal;
 import java.util.HashMap;

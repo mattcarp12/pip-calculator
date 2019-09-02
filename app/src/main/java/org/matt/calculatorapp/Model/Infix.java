@@ -1,10 +1,10 @@
-package org.matt.calculatorapp.Model.Evaluator;
+package org.matt.calculatorapp.Model;
 
 import java.math.BigDecimal;
 import java.util.Stack;
-import static org.matt.calculatorapp.Model.Evaluator.Utility.EvaluatorUtils.applyOperator;
-import static org.matt.calculatorapp.Model.Evaluator.Utility.EvaluatorUtils.isOperator;
-import static org.matt.calculatorapp.Model.Evaluator.Utility.EvaluatorUtils.precedence;
+import static org.matt.calculatorapp.Model.Utility.EvaluatorUtils.precedence;
+import static org.matt.calculatorapp.Model.Utility.EvaluatorUtils.applyOperator;
+import static org.matt.calculatorapp.Model.Utility.EvaluatorUtils.isOperator;
 
 public class Infix{
 

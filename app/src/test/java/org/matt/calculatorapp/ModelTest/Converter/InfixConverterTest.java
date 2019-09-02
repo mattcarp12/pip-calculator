@@ -1,7 +1,7 @@
-package org.matt.calculatorapp.Model.Converter;
+package org.matt.calculatorapp.ModelTest.Converter;
 
 import org.junit.Test;
-import org.matt.calculatorapp.Model.Evaluator.Infix;
+import org.matt.calculatorapp.Model.Infix;
 
 import static org.junit.Assert.assertEquals;
 

@@ -1,4 +1,4 @@
-package org.matt.calculatorapp.Model.Evaluator;
+package org.matt.calculatorapp.Model;
 
 public class Evaluator {
 

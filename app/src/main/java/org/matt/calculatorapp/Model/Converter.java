@@ -1,6 +1,4 @@
-package org.matt.calculatorapp.Model.Converter;
-
-import org.matt.calculatorapp.Model.Evaluator.Infix;
+package org.matt.calculatorapp.Model;
 
 public class Converter {
 

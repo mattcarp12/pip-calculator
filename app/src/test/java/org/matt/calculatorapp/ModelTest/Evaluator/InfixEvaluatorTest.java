@@ -1,7 +1,8 @@
-package org.matt.calculatorapp.Model.Evaluator;
+package org.matt.calculatorapp.ModelTest.Evaluator;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
+import org.matt.calculatorapp.Model.Infix;
 
 public class InfixEvaluatorTest {
 
