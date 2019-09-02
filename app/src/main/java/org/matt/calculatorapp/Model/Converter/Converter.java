@@ -1,5 +1,7 @@
 package org.matt.calculatorapp.Model.Converter;
 
+import org.matt.calculatorapp.Model.Evaluator.Infix;
+
 public class Converter {
 
     public static String convert(String inputString, String from, String to) {
@@ -19,11 +21,14 @@ public class Converter {
     }
 
     private static String convertInfixToPrefix(String inputString) {
-        return "";
+        // Reverse infix expression, convert to postfix, then reverse again
+        return new StringBuilder(
+                convertInfixToPostfix(new StringBuilder(inputString).reverse().toString())
+        ).reverse().toString();
     }
 
     private static String convertInfixToPostfix(String inputString) {
-        return "";
+        return Infix.convertToPostfix(inputString);
     }
 
     private static String convertPrefixToInfix(String inputString) {

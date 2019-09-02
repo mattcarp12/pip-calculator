@@ -47,7 +47,7 @@ public class AppPresenter implements Presenter {
     @Override
     public void setCalculatorMode(String mode) {
         calculator.setCalculatorMode(mode);
-        appView.setTvInputString(calculator.getInputString());
+        update();
     }
 
     @Override

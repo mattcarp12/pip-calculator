@@ -1,11 +1,14 @@
 package org.matt.calculatorapp.AppView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.widget.TextView;
 
 import org.matt.calculatorapp.Presenter.AppPresenter;
@@ -33,6 +36,23 @@ public class MainActivity extends AppCompatActivity implements AppView {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.action_bar_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        //return super.onOptionsItemSelected(item);
+        switch (item.getItemId()) {
+            case R.id.prefix_mode:
+                presenter.setCalculatorMode("PREFIX");
+                break;
+            case R.id.infix_mode:
+                presenter.setCalculatorMode("INFIX");
+                break;
+            case R.id.postfix_mode:
+                presenter.setCalculatorMode("POSTFIX");
+                break;
+        }
         return true;
     }
 
@@ -75,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements AppView {
 
         /* These buttons have more advanced functionality */
         ((Button)findViewById(R.id.btn_decimal)).setOnClickListener(decimalButtonClick);
+        ((Button)findViewById(R.id.btn_decimal)).setOnLongClickListener(decimalButtonClickLong);
         ((Button)findViewById(R.id.btn_neg)).setOnClickListener(negButtonClick);
         ((Button)findViewById(R.id.btn_paren)).setOnClickListener(parenButtonClick);
         ((Button)findViewById(R.id.btn_eq)).setOnClickListener(equalsButtonClick);
@@ -93,6 +114,14 @@ public class MainActivity extends AppCompatActivity implements AppView {
         @Override
         public void onClick(View view) {
             presenter.addToInputString('.');
+        }
+    };
+
+    OnLongClickListener decimalButtonClickLong = new OnLongClickListener() {
+        @Override
+        public boolean onLongClick(View view) {
+            presenter.addToInputString(' ');
+            return true;
         }
     };
 

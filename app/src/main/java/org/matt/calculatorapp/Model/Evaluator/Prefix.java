@@ -6,4 +6,8 @@ public class Prefix {
         return "";
     }
 
+    public static String convertToInfix(String inputString) {
+        return "";
+    }
+
 }

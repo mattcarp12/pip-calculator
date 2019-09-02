@@ -55,13 +55,60 @@ public class Infix{
 
         if (!operationPerformed) return "";
         BigDecimal result = operandStack.pop();
-        /*if(result == (long) result)
-            return String.format("%d", (long) result);
-        else
-            return String.format("%s", result);*/
-        /*if (result % 1 == 0) return Integer.toString((int)result);
-        else return Double.toString(result);*/
         return result.toString();
+    }
+
+    public static String convertToPostfix(String inputString) {
+        StringBuilder postfixString = new StringBuilder();
+        StringBuilder operand = new StringBuilder();
+        Stack<Character> stack = new Stack<>();
+        for (char c : inputString.toCharArray()) {
+            if (Character.isDigit(c) || c == '.')
+                operand.append(c);
+
+            if (c == '(')
+                stack.push(c);
+
+            if (c == ')') {
+                if (operand.length() != 0) {
+                    postfixString.append(operand.toString() + " ");
+                    operand.setLength(0);
+                }
+                while (stack.peek() != '(') {
+                    postfixString.append(stack.pop() + " ");
+                }
+                stack.pop();
+            }
+
+            if (isOperator(c)) {
+                if (operand.length() != 0) {
+                    postfixString.append(operand.toString() + " ");
+                    operand.setLength(0);
+                }
+                if (stack.isEmpty() || stack.peek() == '(' ||
+                        precedence.get(stack.peek()) < precedence.get(c)) {
+                    stack.push(c);
+                } else {
+                    while (stack.peek() == '(' || precedence.get(stack.peek()) >= precedence.get(c)) {
+                        if (stack.peek() == '(') {
+                            stack.push(c);
+                            break;
+                        } else {
+                            postfixString.append(stack.pop() + " ");
+                        }
+                    }
+                    stack.push(c);
+                }
+            }
+        }
+
+        if (operand.length() != 0)
+            postfixString.append(operand.toString() + " ");
+
+        while (!stack.isEmpty())
+            postfixString.append(stack.pop() + " ");
+
+        return postfixString.toString().trim();
     }
 
 }
