@@ -34,4 +34,19 @@ public class EvaluatorUtils {
         }
     }
 
+    public static BigDecimal applyOperatorPrefix(char operator, BigDecimal op1, BigDecimal op2) {
+        switch (operator) {
+            case '+':
+                return op2.add(op1);
+            case '-':
+                return op1.subtract(op2);
+            case '*':
+                return op2.multiply(op1);
+            case '/':
+                return op1.divide(op2);
+            default:
+                return new BigDecimal(0);
+        }
+    }
+
 }

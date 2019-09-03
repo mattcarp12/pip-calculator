@@ -9,30 +9,27 @@ import org.junit.runner.RunWith;
 import org.matt.calculatorapp.AppView.MainActivity;
 
 import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.longClick;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 
 @RunWith(AndroidJUnit4.class)
-public class ConversionTest {
+public class PostfixCalculationTest {
 
     @Rule
     public ActivityScenarioRule<MainActivity> activityScenarioRule
             = new ActivityScenarioRule<>(MainActivity.class);
 
     @Test
-    public void InfixToPrefixConversionTest() {
-        onView(withId(R.id.btn_3)).perform(click());
+    public void PostfixAdditionTest() {
+        onView(withId(R.id.postfix_mode)).perform(click());
+        onView(withId(R.id.btn_6)).perform(click());
+        onView(withId(R.id.btn_decimal)).perform(longClick());
+        onView(withId(R.id.btn_7)).perform(click());
         onView(withId(R.id.btn_add)).perform(click());
-        onView(withId(R.id.btn_2)).perform(click());
-        onView(withId(R.id.tv_userInput)).check(matches(withText("3+2")));
-        onView(withId(R.id.tv_userResult)).check(matches(withText("5")));
-        openActionBarOverflowOrOptionsMenu(getInstrumentation().getTargetContext());
-        onView(withId(R.id.prefix_mode)).perform(click());
-        onView(withId(R.id.tv_userInput)).check(matches(withText("+ 3 2")));
-        onView(withId(R.id.tv_userResult)).check(matches(withText("5")));
+        onView(withId(R.id.tv_userInput)).check(matches(withText("6 7+")));
+        onView(withId(R.id.tv_userResult)).check(matches(withText("13")));
     }
 }

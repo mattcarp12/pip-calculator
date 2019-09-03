@@ -13,7 +13,7 @@ public class PostfixEvaluatorTest {
             assertEquals("5", Postfix.evaluateInputString("3 2 +"));
             assertEquals("-1", Postfix.evaluateInputString("2 3 -"));
             assertEquals("6", Postfix.evaluateInputString("2 3 *"));
-            assertEquals("6", Postfix.evaluateInputString("2 3 *"));
+            assertEquals("-4", Postfix.evaluateInputString("2 3 1 * + 9 -"));
 
         } catch (Exception e) {
             e.printStackTrace();

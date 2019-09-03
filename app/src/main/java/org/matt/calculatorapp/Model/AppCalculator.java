@@ -19,11 +19,7 @@ public class AppCalculator implements Calculator {
     @Override
     public void addToInputString(char c) {
         inputString.append(c);
-        try {
-            result = Evaluator.evaluateInputString(inputString.toString(), mode);
-        } catch(Exception e) {
-            result = "";
-        }
+        evaluate();
     }
 
     @Override
@@ -48,12 +44,7 @@ public class AppCalculator implements Calculator {
             parenDepth++;
         }
 
-        try {
-            result = Evaluator.evaluateInputString(inputString.toString(), mode);
-        } catch(Exception e) {
-            result = "";
-        }
-
+        evaluate();
     }
 
     @Override
@@ -90,12 +81,14 @@ public class AppCalculator implements Calculator {
         if (c == '(') parenDepth--;
         if (c == ')') parenDepth++;
         inputString.deleteCharAt(inputString.length() - 1);
+        evaluate();
+    }
+
+    private void evaluate() {
         try {
             result = Evaluator.evaluateInputString(inputString.toString(), mode);
         } catch(Exception e) {
             result = "";
         }
     }
-
-
 }

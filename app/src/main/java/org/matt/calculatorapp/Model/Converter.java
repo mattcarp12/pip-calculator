@@ -30,11 +30,11 @@ public class Converter {
     }
 
     private static String convertPrefixToInfix(String inputString) {
-        return "";
+        return Prefix.convertToInfix(inputString);
     }
 
     private static String convertPostfixToInfix(String inputString) {
-        return "";
+        return Postfix.convertToInfix(inputString);
     }
 
 }

@@ -89,7 +89,7 @@ public class Infix{
                         precedence.get(stack.peek()) < precedence.get(c)) {
                     stack.push(c);
                 } else {
-                    while (stack.peek() == '(' || precedence.get(stack.peek()) >= precedence.get(c)) {
+                    while (!stack.isEmpty() && (stack.peek() == '(' || precedence.get(stack.peek()) >= precedence.get(c))) {
                         if (stack.peek() == '(') {
                             stack.push(c);
                             break;

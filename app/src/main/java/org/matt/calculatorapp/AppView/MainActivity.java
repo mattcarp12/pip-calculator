@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity implements AppView {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        //return super.onOptionsItemSelected(item);
         switch (item.getItemId()) {
             case R.id.prefix_mode:
                 presenter.setCalculatorMode("PREFIX");

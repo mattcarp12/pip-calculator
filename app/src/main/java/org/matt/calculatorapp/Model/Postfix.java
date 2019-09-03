@@ -33,4 +33,30 @@ public class Postfix {
         return stack.pop().toString();
     }
 
+    public static String convertToInfix(String inputString) {
+        Stack<String> stack = new Stack<>();
+        StringBuilder operand = new StringBuilder();
+
+        for (char c : inputString.toCharArray()) {
+
+            if (Character.isDigit(c) || c == '.')
+                operand.append(c);
+
+            if (c == ' ' && operand.length() != 0) {
+                stack.push(operand.toString());
+                operand.setLength(0);
+            }
+
+            if (EvaluatorUtils.isOperator(c)) {
+                if (operand.length() != 0) {
+                    stack.push(operand.toString());
+                    operand.setLength(0);
+                }
+                String op1 = stack.pop();
+                String op2 = stack.pop();
+                stack.push("(" + op2 + " " + c + " " + op1 + ")");
+            }
+        }
+        return stack.pop();
+    }
 }
