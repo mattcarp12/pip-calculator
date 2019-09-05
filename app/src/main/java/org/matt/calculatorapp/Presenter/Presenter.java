@@ -4,19 +4,23 @@ public interface Presenter {
 
     void addToInputString(char c);
 
-    void addParen();
-
-    String getResult();
-
-    void setCalculatorMode(String mode);
-
     String getInputString();
-
-    void clearCalculator();
 
     void setInputString(String inputString);
 
     void deleteFromInputString();
+
+    void addParen();
+
+    String getResult();
+
+    void setResult(String result);
+
+    String getMode();
+
+    void setCalculatorMode(String mode, boolean convert);
+
+    void clearCalculator();
 
 }
 

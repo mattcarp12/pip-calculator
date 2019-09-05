@@ -49,4 +49,13 @@ public class EvaluatorUtils {
         }
     }
 
+    public static String reverseExpression(String expression) {
+        char[] exp = (new StringBuilder(expression).reverse().toString()).toCharArray();
+        for (int i = 0; i < exp.length; i++) {
+            if (exp[i] == '(') exp[i] = ')';
+            else if (exp[i] == ')') exp[i] = '(';
+        }
+        return new String(exp);
+    }
+
 }

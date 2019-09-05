@@ -33,7 +33,7 @@ public class Postfix {
         return stack.pop().toString();
     }
 
-    public static String convertToInfix(String inputString) {
+    public static String convertToInfix(String inputString) throws Exception {
         Stack<String> stack = new Stack<>();
         StringBuilder operand = new StringBuilder();
 

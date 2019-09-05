@@ -53,9 +53,18 @@ public class AppCalculator implements Calculator {
     }
 
     @Override
+    public void setResult(String result) {
+        this.result = result;
+    }
+
+    @Override
     public void setCalculatorMode(String mode) {
-        inputString = new StringBuilder(Converter.convert(inputString.toString(), this.mode, mode));
         this.mode = mode;
+    }
+
+    @Override
+    public void convertInputString(String mode) {
+        inputString = new StringBuilder(Converter.convert(inputString.toString(), this.mode, mode));
     }
 
     @Override
@@ -66,6 +75,7 @@ public class AppCalculator implements Calculator {
     @Override
     public void setInputString(String inputString) {
         this.inputString = new StringBuilder(inputString);
+        evaluate();
     }
 
     @Override
@@ -77,6 +87,7 @@ public class AppCalculator implements Calculator {
 
     @Override
     public void deleteFromInputString() {
+        if (inputString.length() == 0) return;
         char c = inputString.charAt(inputString.length() - 1);
         if (c == '(') parenDepth--;
         if (c == ')') parenDepth++;
@@ -84,10 +95,16 @@ public class AppCalculator implements Calculator {
         evaluate();
     }
 
+    @Override
+    public String getMode() {
+        return mode;
+    }
+
     private void evaluate() {
         try {
             result = Evaluator.evaluateInputString(inputString.toString(), mode);
         } catch(Exception e) {
+            e.printStackTrace();
             result = "";
         }
     }

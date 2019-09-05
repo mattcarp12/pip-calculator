@@ -8,7 +8,11 @@ public interface Calculator {
 
     String getResult();
 
+    void setResult(String result);
+
     void setCalculatorMode(String mode);
+
+    void convertInputString(String mode);
 
     String getInputString();
 
@@ -18,5 +22,5 @@ public interface Calculator {
 
     void clear();
 
-
+    String getMode();
 }

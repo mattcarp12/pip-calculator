@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements AppView {
     private final Presenter presenter = new AppPresenter(this);
     private TextView tv_inputString;
     private TextView tv_result;
+    private TextView tv_calcMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +30,23 @@ public class MainActivity extends AppCompatActivity implements AppView {
 
         tv_inputString = findViewById(R.id.tv_userInput);
         tv_result = findViewById(R.id.tv_userResult);
+        tv_calcMode = findViewById(R.id.tv_calcMode);
 
         setButtonClickHandlers();
+
+        if (savedInstanceState != null) {
+            presenter.setInputString(savedInstanceState.getString("INPUT_STRING"));
+            presenter.setResult(savedInstanceState.getString("RESULT_STRING"));
+            presenter.setCalculatorMode(savedInstanceState.getString("MODE_STRING"), false);
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("INPUT_STRING", presenter.getInputString());
+        outState.putString("MODE_STRING", presenter.getMode());
+        outState.putString("RESULT_STRING", presenter.getResult());
     }
 
     @Override
@@ -43,13 +59,13 @@ public class MainActivity extends AppCompatActivity implements AppView {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.prefix_mode:
-                presenter.setCalculatorMode("PREFIX");
+                presenter.setCalculatorMode("PREFIX", true);
                 break;
             case R.id.infix_mode:
-                presenter.setCalculatorMode("INFIX");
+                presenter.setCalculatorMode("INFIX", true);
                 break;
             case R.id.postfix_mode:
-                presenter.setCalculatorMode("POSTFIX");
+                presenter.setCalculatorMode("POSTFIX", true);
                 break;
         }
         return true;
@@ -63,6 +79,11 @@ public class MainActivity extends AppCompatActivity implements AppView {
     @Override
     public void setTvResult(String result) {
         this.tv_result.setText(result);
+    }
+
+    @Override
+    public void setMode(String mode) {
+        this.tv_calcMode.setText(mode);
     }
 
     @Override
@@ -157,7 +178,7 @@ public class MainActivity extends AppCompatActivity implements AppView {
     OnClickListener negButtonClick = new OnClickListener() {
         @Override
         public void onClick(View view) {
-
+            presenter.addToInputString('-');
         }
     };
 

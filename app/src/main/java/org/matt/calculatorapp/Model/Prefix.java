@@ -33,7 +33,7 @@ public class Prefix {
         return stack.pop().toString();
     }
 
-    public static String convertToInfix(String inputString) {
+    public static String convertToInfix(String inputString) throws Exception {
         Stack<String> stack = new Stack<>();
         StringBuilder operand = new StringBuilder();
         for (int i = inputString.length() - 1; i >= 0; i--) {

@@ -58,7 +58,7 @@ public class Infix{
         return result.toString();
     }
 
-    public static String convertToPostfix(String inputString) {
+    public static String convertToPostfix(String inputString) throws Exception {
         StringBuilder postfixString = new StringBuilder();
         StringBuilder operand = new StringBuilder();
         Stack<Character> stack = new Stack<>();

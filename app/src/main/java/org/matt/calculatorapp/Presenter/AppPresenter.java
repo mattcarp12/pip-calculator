@@ -45,8 +45,15 @@ public class AppPresenter implements Presenter {
     }
 
     @Override
-    public void setCalculatorMode(String mode) {
+    public void setResult(String result) {
+        calculator.setResult(result);
+    }
+
+    @Override
+    public void setCalculatorMode(String mode, boolean convert) {
+        if (convert) calculator.convertInputString(mode);
         calculator.setCalculatorMode(mode);
+        appView.setMode(mode);
         update();
     }
 
@@ -59,6 +66,11 @@ public class AppPresenter implements Presenter {
     public void deleteFromInputString() {
         calculator.deleteFromInputString();
         update();
+    }
+
+    @Override
+    public String getMode() {
+        return calculator.getMode();
     }
 
     private void update() {
