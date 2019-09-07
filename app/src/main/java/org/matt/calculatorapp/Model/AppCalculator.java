@@ -2,6 +2,8 @@ package org.matt.calculatorapp.Model;
 
 import org.matt.calculatorapp.Model.Utility.EvaluatorUtils;
 
+import javax.inject.Inject;
+
 public class AppCalculator implements Calculator {
 
     private StringBuilder inputString;
@@ -9,6 +11,7 @@ public class AppCalculator implements Calculator {
     private String mode;
     private int parenDepth;
 
+    @Inject
     public AppCalculator() {
         inputString = new StringBuilder();
         result = "";
