@@ -12,8 +12,10 @@ import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.widget.TextView;
 
-import org.matt.calculatorapp.Model.AppCalculator;
-import org.matt.calculatorapp.Presenter.AppPresenter;
+import org.matt.calculatorapp.Application.InitApplication;
+import org.matt.calculatorapp.DI.AppModule;
+import org.matt.calculatorapp.DI.DaggerActivityComponent;
+import org.matt.calculatorapp.DI.MvpModule;
 import org.matt.calculatorapp.Presenter.Presenter;
 import org.matt.calculatorapp.R;
 
@@ -24,8 +26,8 @@ public class MainActivity extends AppCompatActivity implements AppView {
 
 /*    @Inject
     private Presenter presenter = new AppPresenter(this, new AppCalculator());*/
-    private Presenter presenter = new AppPresenter(this);
 
+    @Inject Presenter presenter;
     private static final String TAG = MainActivity.class.getSimpleName();
     private TextView tv_inputString;
     private TextView tv_result;
@@ -35,6 +37,12 @@ public class MainActivity extends AppCompatActivity implements AppView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        DaggerActivityComponent.builder()
+                .appComponent(InitApplication.get(this).getAppComponent())
+                .mvpModule(new MvpModule(this))
+                .build()
+                .inject(this);
 
         tv_inputString = findViewById(R.id.tv_userInput);
         tv_result = findViewById(R.id.tv_userResult);

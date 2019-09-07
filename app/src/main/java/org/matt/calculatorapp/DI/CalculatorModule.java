@@ -7,11 +7,10 @@ import dagger.Module;
 import dagger.Provides;
 
 @Module
-public class CalcModule {
+public class CalculatorModule {
 
     @Provides
-    Calculator provideCalculator(AppCalculator calculator) {
+    Calculator providesCalculator(AppCalculator calculator) {
         return calculator;
     }
-
 }

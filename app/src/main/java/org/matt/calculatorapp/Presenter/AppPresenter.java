@@ -2,25 +2,18 @@ package org.matt.calculatorapp.Presenter;
 
 import org.matt.calculatorapp.Model.Calculator;
 import org.matt.calculatorapp.AppView.AppView;
-import org.matt.calculatorapp.DI.DaggerCalcComponent;
 import javax.inject.Inject;
 
 public class AppPresenter implements Presenter {
 
 
-    @Inject Calculator calculator;
+    private Calculator calculator;
     private AppView appView;
 
-    /*@Inject
+    @Inject
     public AppPresenter(AppView appView, Calculator calculator) {
         this.appView = appView;
         this.calculator = calculator;
-    }*/
-
-    // Using Dagger to do field injection
-    public AppPresenter(AppView appView) {
-        this.appView = appView;
-        DaggerCalcComponent.create().inject(this);
     }
 
     @Override
