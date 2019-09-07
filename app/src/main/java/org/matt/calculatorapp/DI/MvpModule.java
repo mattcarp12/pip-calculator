@@ -1,7 +1,6 @@
 package org.matt.calculatorapp.DI;
 
 import org.matt.calculatorapp.AppView.AppView;
-import org.matt.calculatorapp.Model.Calculator;
 import org.matt.calculatorapp.Presenter.AppPresenter;
 import org.matt.calculatorapp.Presenter.Presenter;
 
@@ -23,7 +22,7 @@ public class MvpModule {
     }
 
     @Provides
-    Presenter providesPresenter(AppView appView, Calculator calculator) {
-        return new AppPresenter(appView, calculator);
+    Presenter providesPresenter(AppPresenter presenter) {
+        return presenter;
     }
 }

@@ -1,19 +1,18 @@
 package org.matt.calculatorapp.AppView;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
+import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import org.matt.calculatorapp.Application.InitApplication;
-import org.matt.calculatorapp.DI.AppModule;
 import org.matt.calculatorapp.DI.DaggerActivityComponent;
 import org.matt.calculatorapp.DI.MvpModule;
 import org.matt.calculatorapp.Presenter.Presenter;
@@ -22,10 +21,6 @@ import org.matt.calculatorapp.R;
 import javax.inject.Inject;
 
 public class MainActivity extends AppCompatActivity implements AppView {
-
-
-/*    @Inject
-    private Presenter presenter = new AppPresenter(this, new AppCalculator());*/
 
     @Inject Presenter presenter;
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -39,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements AppView {
         setContentView(R.layout.activity_main);
 
         DaggerActivityComponent.builder()
-                .appComponent(InitApplication.get(this).getAppComponent())
+                .appComponent(((InitApplication)getApplication()).getAppComponent())
                 .mvpModule(new MvpModule(this))
                 .build()
                 .inject(this);
@@ -50,11 +45,13 @@ public class MainActivity extends AppCompatActivity implements AppView {
 
         setButtonClickHandlers();
 
-        if (savedInstanceState != null) {
+        /*if (savedInstanceState != null) {
             presenter.setInputString(savedInstanceState.getString("INPUT_STRING"));
             presenter.setResult(savedInstanceState.getString("RESULT_STRING"));
             presenter.setCalculatorMode(savedInstanceState.getString("MODE_STRING"), false);
-        }
+        }*/
+
+        presenter.update();
     }
 
     @Override
@@ -98,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements AppView {
     }
 
     @Override
-    public void setMode(String mode) {
+    public void setTvMode(String mode) {
         this.tv_calcMode.setText(mode);
     }
 
@@ -145,14 +142,12 @@ public class MainActivity extends AppCompatActivity implements AppView {
             presenter.addToInputString(((Button) view).getText().charAt(0));
         }
     };
-
     OnClickListener decimalButtonClick = new OnClickListener() {
         @Override
         public void onClick(View view) {
             presenter.addToInputString('.');
         }
     };
-
     OnLongClickListener decimalButtonClickLong = new OnLongClickListener() {
         @Override
         public boolean onLongClick(View view) {
@@ -160,21 +155,18 @@ public class MainActivity extends AppCompatActivity implements AppView {
             return true;
         }
     };
-
     OnClickListener clearButtonClick = new OnClickListener() {
         @Override
         public void onClick(View view) {
             presenter.clearCalculator();
         }
     };
-
     OnClickListener deleteButtonClick = new OnClickListener() {
         @Override
         public void onClick(View view) {
             presenter.deleteFromInputString();
         }
     };
-
     OnClickListener equalsButtonClick = new OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -183,14 +175,12 @@ public class MainActivity extends AppCompatActivity implements AppView {
             presenter.setInputString(tempResult);
         }
     };
-
     OnClickListener parenButtonClick = new OnClickListener() {
         @Override
         public void onClick(View view) {
             presenter.addParen();
         }
     };
-
     OnClickListener negButtonClick = new OnClickListener() {
         @Override
         public void onClick(View view) {

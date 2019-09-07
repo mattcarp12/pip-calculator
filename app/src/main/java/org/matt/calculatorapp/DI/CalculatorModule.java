@@ -3,14 +3,14 @@ package org.matt.calculatorapp.DI;
 import org.matt.calculatorapp.Model.AppCalculator;
 import org.matt.calculatorapp.Model.Calculator;
 
+import javax.inject.Singleton;
+
+import dagger.Binds;
 import dagger.Module;
-import dagger.Provides;
+
 
 @Module
-public class CalculatorModule {
-
-    @Provides
-    Calculator providesCalculator(AppCalculator calculator) {
-        return calculator;
-    }
+public abstract class CalculatorModule {
+    @Binds
+    abstract Calculator bindsCalculator(AppCalculator calculator);
 }

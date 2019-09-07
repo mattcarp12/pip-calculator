@@ -22,5 +22,7 @@ public interface Presenter {
 
     void clearCalculator();
 
+    void update();
+
 }
 

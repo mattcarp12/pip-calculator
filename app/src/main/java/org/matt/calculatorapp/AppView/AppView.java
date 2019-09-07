@@ -6,7 +6,7 @@ public interface AppView {
 
     void setTvResult(String result);
 
-    void setMode(String mode);
+    void setTvMode(String mode);
 
     void clearInputString();
 
