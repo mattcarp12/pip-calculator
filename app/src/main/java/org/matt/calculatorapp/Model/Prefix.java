@@ -11,6 +11,7 @@ public class Prefix {
     public static String evaluateInputString(String inputString) throws Exception {
         Stack<BigDecimal> stack = new Stack<>();
         StringBuilder operand = new StringBuilder();
+        boolean operationPerformed = false;
         for (int i = inputString.length() - 1; i >= 0; i--) {
             char c = inputString.charAt(i);
             if (Character.isDigit(c) || c == '.') {
@@ -28,8 +29,10 @@ public class Prefix {
                     operand.setLength(0);
                 }
                 stack.push(applyOperatorPrefix(c, stack.pop(), stack.pop()));
+                operationPerformed = true;
             }
         }
+        if (!operationPerformed) return "";
         return stack.pop().toString();
     }
 

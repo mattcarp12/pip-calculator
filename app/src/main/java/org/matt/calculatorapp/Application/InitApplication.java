@@ -4,10 +4,6 @@ import android.app.Application;
 
 import org.matt.calculatorapp.DI.AppComponent;
 import org.matt.calculatorapp.DI.DaggerAppComponent;
-import org.matt.calculatorapp.Model.AppCalculator;
-
-import javax.inject.Inject;
-import javax.inject.Singleton;
 
 public class InitApplication extends Application {
 

@@ -5,12 +5,16 @@ import org.matt.calculatorapp.Model.Utility.EvaluatorUtils;
 import java.math.BigDecimal;
 import java.util.Stack;
 
+import static org.matt.calculatorapp.Model.Utility.EvaluatorUtils.applyOperator;
+import static org.matt.calculatorapp.Model.Utility.EvaluatorUtils.isOperator;
+
 public class Postfix {
 
     public static String evaluateInputString(String inputString) throws Exception {
 
         Stack<BigDecimal> stack = new Stack<>();
         StringBuilder operand = new StringBuilder();
+        boolean operationPerformed = false;
 
         for (char c : inputString.toCharArray()) {
 
@@ -22,14 +26,16 @@ public class Postfix {
                 operand.setLength(0);
             }
 
-            if (EvaluatorUtils.isOperator(c)) {
+            if (isOperator(c)) {
                 if (operand.length() != 0) {
                     stack.push(new BigDecimal(operand.toString()));
                     operand.setLength(0);
                 }
-                stack.push(EvaluatorUtils.applyOperator(c, stack.pop(), stack.pop()));
+                stack.push(applyOperator(c, stack.pop(), stack.pop()));
+                operationPerformed = true;
             }
         }
+        if (!operationPerformed) return "";
         return stack.pop().toString();
     }
 
@@ -47,7 +53,7 @@ public class Postfix {
                 operand.setLength(0);
             }
 
-            if (EvaluatorUtils.isOperator(c)) {
+            if (isOperator(c)) {
                 if (operand.length() != 0) {
                     stack.push(operand.toString());
                     operand.setLength(0);

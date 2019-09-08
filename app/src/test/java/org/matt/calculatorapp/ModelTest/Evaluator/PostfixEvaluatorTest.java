@@ -14,7 +14,6 @@ public class PostfixEvaluatorTest {
             assertEquals("-1", Postfix.evaluateInputString("2 3 -"));
             assertEquals("6", Postfix.evaluateInputString("2 3 *"));
             assertEquals("-4", Postfix.evaluateInputString("2 3 1 * + 9 -"));
-
         } catch (Exception e) {
             e.printStackTrace();
         }
