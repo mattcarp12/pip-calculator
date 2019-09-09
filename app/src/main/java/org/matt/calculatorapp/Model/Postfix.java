@@ -27,6 +27,9 @@ public class Postfix {
             }
 
             if (isOperator(c)) {
+                if (operand.length() == 0 && c == '-') {
+                    stack.push(new BigDecimal(0));
+                }
                 if (operand.length() != 0) {
                     stack.push(new BigDecimal(operand.toString()));
                     operand.setLength(0);

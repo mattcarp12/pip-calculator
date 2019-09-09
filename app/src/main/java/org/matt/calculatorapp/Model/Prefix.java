@@ -24,6 +24,9 @@ public class Prefix {
             }
 
             if (isOperator(c)) {
+                if (operand.length() == 0 && c == '-') {
+                    stack.push(new BigDecimal(0));
+                }
                 if (operand.length() != 0) {
                     stack.push(new BigDecimal(operand.reverse().toString()));
                     operand.setLength(0);

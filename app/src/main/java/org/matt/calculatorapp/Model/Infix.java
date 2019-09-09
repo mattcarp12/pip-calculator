@@ -21,6 +21,9 @@ public class Infix{
             if (c == '(') operatorStack.push(c);
 
             if (isOperator(c)) {
+                if (operand.length() == 0 && c == '-') {
+                    operandStack.push(new BigDecimal(0));
+                }
                 if (operand.length() != 0) {
                     operandStack.push(new BigDecimal(operand.toString()));
                     operand.setLength(0);

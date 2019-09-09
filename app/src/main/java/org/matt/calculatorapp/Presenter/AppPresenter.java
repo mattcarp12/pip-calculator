@@ -55,7 +55,6 @@ public class AppPresenter implements Presenter {
     public void setCalculatorMode(String mode, boolean convert) {
         if (convert) calculator.convertInputString(mode);
         calculator.setCalculatorMode(mode);
-        appView.setTvMode(mode);
         update();
     }
 

@@ -8,6 +8,7 @@ import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -45,13 +46,11 @@ public class MainActivity extends AppCompatActivity implements AppView {
 
         setButtonClickHandlers();
 
-        /*if (savedInstanceState != null) {
+        if (savedInstanceState != null) {
             presenter.setInputString(savedInstanceState.getString("INPUT_STRING"));
             presenter.setResult(savedInstanceState.getString("RESULT_STRING"));
             presenter.setCalculatorMode(savedInstanceState.getString("MODE_STRING"), false);
-        }*/
-
-        presenter.update();
+        }
     }
 
     @Override
@@ -128,8 +127,7 @@ public class MainActivity extends AppCompatActivity implements AppView {
 
         /* These buttons have more advanced functionality */
         ((Button) findViewById(R.id.btn_decimal)).setOnClickListener(decimalButtonClick);
-        ((Button) findViewById(R.id.btn_decimal)).setOnLongClickListener(decimalButtonClickLong);
-        ((Button) findViewById(R.id.btn_neg)).setOnClickListener(negButtonClick);
+        ((Button) findViewById(R.id.btn_space)).setOnClickListener(spaceButtonClick);
         ((Button) findViewById(R.id.btn_paren)).setOnClickListener(parenButtonClick);
         ((Button) findViewById(R.id.btn_eq)).setOnClickListener(equalsButtonClick);
         ((Button) findViewById(R.id.btn_del)).setOnClickListener(deleteButtonClick);
@@ -146,13 +144,6 @@ public class MainActivity extends AppCompatActivity implements AppView {
         @Override
         public void onClick(View view) {
             presenter.addToInputString('.');
-        }
-    };
-    OnLongClickListener decimalButtonClickLong = new OnLongClickListener() {
-        @Override
-        public boolean onLongClick(View view) {
-            presenter.addToInputString(' ');
-            return true;
         }
     };
     OnClickListener clearButtonClick = new OnClickListener() {
@@ -181,10 +172,10 @@ public class MainActivity extends AppCompatActivity implements AppView {
             presenter.addParen();
         }
     };
-    OnClickListener negButtonClick = new OnClickListener() {
+    OnClickListener spaceButtonClick = new OnClickListener() {
         @Override
         public void onClick(View view) {
-            presenter.addToInputString('-');
+            presenter.addToInputString(' ');
         }
     };
 
